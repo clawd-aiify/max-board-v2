@@ -7,6 +7,19 @@
   },
   "done": [
     {
+      "id": "groq-model-catalog",
+      "title": "Expanded Groq Model Catalog",
+      "category": "Infrastructure",
+      "description": "Added support for larger context and next-gen models on Groq",
+      "details": [
+        "Models added: llama-3.3-70b, llama-4-maverick, llama-4-scout, kimi-k2 (262k context), qwen-32b, gpt-oss-120b",
+        "Aliases: Updated for all new models",
+        "Status: ✅ Configured in openclaw.json",
+        "Note: Primary model remains llama-3.1-8b-instant as requested"
+      ],
+      "completedDate": "2026-01-31"
+    },
+    {
       "id": "slack-config",
       "title": "Slack Integration Setup",
       "category": "Infrastructure",
@@ -471,7 +484,7 @@
     ]
   },
   "stats": {
-    "tasksCompleted": 20,
+    "tasksCompleted": 21,
     "tasksInProgress": 0,
     "tasksTodo": 2,
     "hoursInvested": 26.5,
