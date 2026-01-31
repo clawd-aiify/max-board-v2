@@ -1,0 +1,462 @@
+{
+  "project": {
+    "name": "Max Command Center & Worker Factory",
+    "description": "Multi-tenant OpenClaw deployment system with automated customer onboarding",
+    "startDate": "2026-01-30",
+    "lastUpdated": "2026-01-31"
+  },
+  "done": [
+    {
+      "id": "slack-config",
+      "title": "Slack Integration Setup",
+      "category": "Infrastructure",
+      "description": "Complete Slack bot configuration with Socket Mode, ambient listening, and channel allowlist",
+      "details": [
+        "Bot token: [REDACTED]",
+        "App token: [REDACTED]",
+        "Socket Mode: Enabled",
+        "Event Subscriptions: message.channels, message.im, file_shared",
+        "Ambient mode in #openclaw-training (C0ACVAQPWEL)",
+        "No mention required for messages"
+      ],
+      "links": [
+        {
+          "label": "Slack App Dashboard",
+          "url": "https://api.slack.com/apps"
+        }
+      ],
+      "completedDate": "2026-01-30"
+    },
+    {
+      "id": "gmail-integration",
+      "title": "Gmail API Integration",
+      "category": "Infrastructure",
+      "description": "OAuth2-authenticated Gmail API access for max@aiifyit.com with real-time monitoring",
+      "details": [
+        "Account: max@aiifyit.com",
+        "OAuth2: Refresh token configured in .env",
+        "Capabilities: Send, read, modify emails",
+        "Monitoring: Silent daemon (60s poll, 8am-11pm UTC)",
+        "Reply Policy: Reply All for group emails",
+        "Status: ✅ Operational (deployed 2026-01-30 23:02 UTC)"
+      ],
+      "links": [
+        {
+          "label": "Gmail API Docs",
+          "url": "https://developers.google.com/gmail/api"
+        }
+      ],
+      "completedDate": "2026-01-30"
+    },
+    {
+      "id": "slack-helper",
+      "title": "Slack Helper Scripts",
+      "category": "Automation",
+      "description": "Utility scripts for Slack channel automation and user management",
+      "details": [
+        "scripts/slack-helper.js: Channel creation + user invites",
+        "scripts/slack-create-channel.js: Low-level API wrapper",
+        "Features: Auto-create channels, invite team members, error handling",
+        "Integration: Used by Customer Onboarding Agent"
+      ],
+      "links": [
+        {
+          "label": "Slack Web API",
+          "url": "https://api.slack.com/web"
+        }
+      ],
+      "completedDate": "2026-01-31"
+    },
+    {
+      "id": "zoho-inventory-sdk",
+      "title": "Zoho Inventory TypeScript SDK",
+      "category": "Integration",
+      "description": "Full CRUD operations for Zoho Inventory Items & Composite Items",
+      "details": [
+        "Location: /workspace/zoho-inventory/",
+        "APIs: Items, Composite Items",
+        "Features: Rate limiting (150 req/min), type-safe, error handling",
+        "Operations: Create, read, update, delete, search, low-stock alerts",
+        "Tech: TypeScript, Axios, dotenv"
+      ],
+      "links": [
+        {
+          "label": "Zoho Inventory API",
+          "url": "https://www.zoho.com/inventory/api/v1/"
+        }
+      ],
+      "completedDate": "2026-01-30"
+    },
+    {
+      "id": "zoho-api-sandbox",
+      "title": "Zoho API Mock Sandbox",
+      "category": "Testing",
+      "description": "Next.js/MongoDB mock API for testing Zoho integrations without production risk",
+      "details": [
+        "GitHub: clawd-aiify/zoho-api-sandbox",
+        "Live: https://zoho-api-sandbox.vercel.app",
+        "Stack: Next.js 15, MongoDB, Vercel",
+        "Endpoints: POST /api/zoho/items, POST /api/zoho/compositeitems",
+        "Web UI: Browse/filter/inspect all API calls",
+        "n8n Workflow: ID CuxtYtLJwORbQfm3 (automated testing)"
+      ],
+      "links": [
+        {
+          "label": "GitHub Repo",
+          "url": "https://github.com/clawd-aiify/zoho-api-sandbox"
+        },
+        {
+          "label": "Live Sandbox",
+          "url": "https://zoho-api-sandbox.vercel.app"
+        }
+      ],
+      "completedDate": "2026-01-30"
+    },
+    {
+      "id": "github-vercel-pipeline",
+      "title": "GitHub → Vercel CI/CD Pipeline",
+      "category": "DevOps",
+      "description": "Automated deployment pipeline for Next.js apps",
+      "details": [
+        "Flow: GitHub push → Vercel auto-deploy",
+        "Apps: zoho-api-sandbox (production)",
+        "Platform: Vercel",
+        "Env vars: Synced via Vercel dashboard",
+        "MongoDB: Atlas connection for sandbox"
+      ],
+      "links": [
+        {
+          "label": "Vercel Dashboard",
+          "url": "https://vercel.com/dashboard"
+        }
+      ],
+      "completedDate": "2026-01-30"
+    },
+    {
+      "id": "terraform-deployment-factory",
+      "title": "Unified Terraform Deployment Factory",
+      "category": "Infrastructure",
+      "description": "Single Terraform codebase for deploying Commander & Worker instances on GCE",
+      "details": [
+        "Location: /workspace/terraform/max-clone/",
+        "Platform: Google Compute Engine (GCE)",
+        "Modes: Commander (e2-standard-4, $124/mo) & Worker (e2-standard-2, $62/mo)",
+        "Scripts: deploy.sh (unified deployment), startup.sh (bootstrap)",
+        "Features: GitHub PAT auth, SSH key injection, mode-aware config",
+        "Validation: ✅ Test worker deployed successfully (4 iterations)"
+      ],
+      "links": [
+        {
+          "label": "GCP Console",
+          "url": "https://console.cloud.google.com"
+        }
+      ],
+      "completedDate": "2026-01-31"
+    },
+    {
+      "id": "ssh-access-pattern",
+      "title": "SSH Access Configuration",
+      "category": "Security",
+      "description": "Automated SSH key injection for central-command → worker access",
+      "details": [
+        "deploy.sh: Auto-generates SSH keys if missing",
+        "startup.sh: Injects central-command public key into worker authorized_keys",
+        "Pattern: Max has SSH for troubleshooting, humans use Slack channels",
+        "Validation: ✅ SSH from central-command to test-worker confirmed"
+      ],
+      "completedDate": "2026-01-31"
+    },
+    {
+      "id": "worker-bootstrap",
+      "title": "Worker VM Bootstrap Process",
+      "category": "Infrastructure",
+      "description": "Automated worker instance initialization with config validation",
+      "details": [
+        "Fixes applied: GitHub PAT auth, heredoc variable expansion, config schema",
+        "Bootstrap: Clone openclaw-max-backup → install OpenClaw → generate config",
+        "Lessons: Single quotes in heredocs disable expansion, config validation critical",
+        "Status: ✅ 4 iterations → fully operational"
+      ],
+      "completedDate": "2026-01-31"
+    },
+    {
+      "id": "voice-transcription",
+      "title": "Slack Voice Memo Transcription",
+      "category": "AI/ML",
+      "description": "Automatic transcription of Slack voice memos via OpenAI Whisper API",
+      "details": [
+        "API: OpenAI Whisper",
+        "Cost: $0.006/minute",
+        "Service: localhost:8766 (transcription-service.js)",
+        "Hook: file_shared event → download → transcribe → thread reply + 📝 reaction",
+        "Config: tools.media.audio.enabled = true",
+        "Status: ✅ Service running, hook registered"
+      ],
+      "links": [
+        {
+          "label": "Whisper API Docs",
+          "url": "https://platform.openai.com/docs/guides/speech-to-text"
+        }
+      ],
+      "completedDate": "2026-01-31"
+    },
+    {
+      "id": "context-enrichment-engine",
+      "title": "Context Enrichment Engine (N8N)",
+      "category": "Automation",
+      "description": "Meta-level workflow for continuous context awareness and self-improvement",
+      "details": [
+        "N8N Workflow ID: 47Sm1XjZcSZJPcPj",
+        "Architecture: N8N Cloud → Webhook server (central-command:8765)",
+        "Capabilities: Scans memory files, Git history, generates insights",
+        "Output: memory/insights-YYYY-MM-DD.md",
+        "Status: ⚠️ Active (pending firewall rule for inbound tcp:8765)"
+      ],
+      "links": [
+        {
+          "label": "N8N Workflow",
+          "url": "https://aiifyit.app.n8n.cloud/workflow/47Sm1XjZcSZJPcPj"
+        }
+      ],
+      "completedDate": "2026-01-31"
+    },
+    {
+      "id": "customer-onboarding-agent",
+      "title": "Customer Onboarding Agent (N8N)",
+      "category": "Automation",
+      "description": "AI-powered workflow to automate customer onboarding from inquiry to deployment specs",
+      "details": [
+        "N8N Workflow ID: yLFs2MQnkZREABzX",
+        "Webhook: https://aiifyit.app.n8n.cloud/webhook/onboard-customer",
+        "Output: onboarding-spec.md, terraform.tfvars, MEMORY.md, Slack channels",
+        "Slack: Auto-creates #customer-{slug} + #customer-{slug}-support",
+        "Team: Auto-invites U09GY9DMKAA, U09GH95TD5M",
+        "Validation: ✅ End-to-end test with Demo Company",
+        "Business Impact: Saves 2-4 hours per lead"
+      ],
+      "links": [
+        {
+          "label": "N8N Workflow",
+          "url": "https://aiifyit.app.n8n.cloud/workflow/yLFs2MQnkZREABzX"
+        },
+        {
+          "label": "Documentation",
+          "url": "/workspace/docs/slack-channel-automation.md"
+        }
+      ],
+      "completedDate": "2026-01-31"
+    },
+    {
+      "id": "transcript-backup",
+      "title": "Session Transcript Backup Automation",
+      "category": "DevOps",
+      "description": "Automated backup of OpenClaw session transcripts to GitHub",
+      "details": [
+        "Script: scripts/backup-transcripts.sh",
+        "Conversion: scripts/convert-transcript.sh (JSONL → Markdown)",
+        "Schedule: Daily via HEARTBEAT.md (23:00 UTC)",
+        "Destination: transcripts/YYYY-MM-DD-session.md",
+        "Fix: Updated jq selector to match nested .message.role structure",
+        "Status: ✅ Conversion script validated (2140 lines generated)"
+      ],
+      "links": [
+        {
+          "label": "GitHub Repo",
+          "url": "https://github.com/clawd-aiify/openclaw-max-backup"
+        }
+      ],
+      "completedDate": "2026-01-31"
+    }
+  ],
+  "inProgress": [],
+  "todo": [
+    {
+      "id": "slack-wiring-workers",
+      "title": "Wire Slack Channels into Worker Deployment",
+      "category": "Infrastructure",
+      "priority": "high",
+      "description": "Integrate Customer Onboarding Agent Slack automation into deploy.sh",
+      "details": [
+        "Call onboarding webhook from deploy.sh",
+        "Store channel IDs in worker config",
+        "Route worker messages to dedicated channels",
+        "Ensure team auto-invite works for all deployments"
+      ],
+      "blockers": [],
+      "estimatedHours": 2
+    },
+    {
+      "id": "gce-vm-naming",
+      "title": "Improve GCE VM Naming Convention",
+      "category": "Infrastructure",
+      "priority": "high",
+      "description": "Make VM names more descriptive for easier tracking at scale",
+      "details": [
+        "Current: test-worker-v4, central-command",
+        "Proposed: max-commander-prod, max-worker-acme-corp, max-worker-demo-inc",
+        "Pattern: max-{mode}-{customer-slug}",
+        "Update: terraform/max-clone/main.tf, deploy.sh"
+      ],
+      "blockers": [],
+      "estimatedHours": 1
+    },
+    {
+      "id": "firewall-context-webhook",
+      "title": "Add GCP Firewall Rule for Context Webhook",
+      "category": "Infrastructure",
+      "priority": "medium",
+      "description": "Allow inbound traffic to central-command:8765 for N8N context enrichment",
+      "details": [
+        "Port: 8765",
+        "Source: N8N Cloud IP ranges",
+        "Target: central-command VM",
+        "Command: gcloud compute firewall-rules create ..."
+      ],
+      "blockers": [],
+      "estimatedHours": 0.5
+    },
+    {
+      "id": "zoho-sandbox-get-endpoints",
+      "title": "Add GET Endpoints to Zoho API Sandbox",
+      "category": "Testing",
+      "priority": "low",
+      "description": "Support list operations in mock sandbox for comprehensive SDK testing",
+      "details": [
+        "Endpoints: GET /api/zoho/items, GET /api/zoho/compositeitems",
+        "Return: Previously created items from MongoDB",
+        "Filters: Support pagination, search, filters",
+        "Update SDK test suite to use full CRUD"
+      ],
+      "blockers": [],
+      "estimatedHours": 2
+    },
+    {
+      "id": "email-reply-automation",
+      "title": "Email Reply Automation Strategy",
+      "category": "Automation",
+      "priority": "medium",
+      "description": "Define auto-reply vs manual trigger approach for Gmail monitoring",
+      "details": [
+        "Options: Auto-reply (immediate), Manual trigger (approval required)",
+        "Current: Silent monitoring with Slack alerts",
+        "Decision needed: Josh/Sami preference",
+        "Implementation: Extend scripts/gmail-monitor.js"
+      ],
+      "blockers": ["Awaiting Sami's input"],
+      "estimatedHours": 3
+    },
+    {
+      "id": "gcp-service-account",
+      "title": "Add GCP Service Account to .env",
+      "category": "Infrastructure",
+      "priority": "high",
+      "description": "Enable Terraform to deploy VMs programmatically",
+      "details": [
+        "Create service account in GCP Console",
+        "Grant Compute Engine Admin role",
+        "Download JSON key",
+        "Add GOOGLE_APPLICATION_CREDENTIALS to .env",
+        "Test terraform apply from CLI"
+      ],
+      "blockers": [],
+      "estimatedHours": 1
+    },
+    {
+      "id": "worker-specs-definition",
+      "title": "Define Per-Customer Worker Requirements",
+      "category": "Planning",
+      "priority": "medium",
+      "description": "Document standard worker configuration per customer type",
+      "details": [
+        "Channels: Slack, email, others?",
+        "Integrations: Which APIs/services?",
+        "Specs: CPU, RAM, disk requirements",
+        "Cost estimates per tier",
+        "Template: Create customer-requirements.md"
+      ],
+      "blockers": [],
+      "estimatedHours": 2
+    },
+    {
+      "id": "n8n-workflow-sharing",
+      "title": "Share N8N Workflows with Team",
+      "category": "Documentation",
+      "priority": "low",
+      "description": "Import workflows into shared n8n team project for collaboration",
+      "details": [
+        "Workflows: Context Enrichment, Customer Onboarding",
+        "Method: Export JSON → Import to team project",
+        "Document workflow IDs and webhook URLs",
+        "Add team members to n8n workspace"
+      ],
+      "blockers": [],
+      "estimatedHours": 1
+    }
+  ],
+  "architecture": {
+    "components": [
+      {
+        "name": "Max Command Center",
+        "type": "Central Hub",
+        "description": "Primary Max instance with full context and oversight",
+        "specs": "e2-standard-4 (4 vCPU, 16GB RAM, 100GB disk)",
+        "cost": "$124/month",
+        "location": "GCE VM: central-command"
+      },
+      {
+        "name": "Max Worker Instances",
+        "type": "Customer-Dedicated Agents",
+        "description": "Isolated Max clones for individual customers",
+        "specs": "e2-standard-2 (2 vCPU, 8GB RAM, 50GB disk)",
+        "cost": "$62/month each",
+        "location": "GCE VMs: worker-{customer}"
+      },
+      {
+        "name": "Slack Channels",
+        "type": "Human Interface",
+        "description": "Dedicated channels per worker for team interaction",
+        "pattern": "#customer-{slug}, #customer-{slug}-support"
+      },
+      {
+        "name": "N8N Workflows",
+        "type": "Automation Engine",
+        "description": "Context enrichment, customer onboarding, testing",
+        "location": "https://aiifyit.app.n8n.cloud"
+      },
+      {
+        "name": "Zoho API Sandbox",
+        "type": "Testing Environment",
+        "description": "Mock API for safe integration testing",
+        "location": "https://zoho-api-sandbox.vercel.app"
+      },
+      {
+        "name": "GitHub Repos",
+        "type": "Source Control",
+        "repos": [
+          "openclaw-max-backup (workspace + transcripts)",
+          "zoho-api-sandbox (mock API)",
+          "max-progress-board (this board)"
+        ]
+      }
+    ],
+    "dataFlow": [
+      "Customer Inquiry → N8N Onboarding Agent → Slack Channels + Specs",
+      "deploy.sh → Terraform → GCE VM → Bootstrap → Worker Instance",
+      "Worker Slack Messages → OpenClaw → Worker Agent → Reply",
+      "Max SSH → Worker VM → Troubleshoot → Fix Issues",
+      "Voice Memo → Whisper API → Transcript → Thread Reply"
+    ]
+  },
+  "stats": {
+    "tasksCompleted": 13,
+    "tasksInProgress": 0,
+    "tasksTodo": 8,
+    "hoursInvested": 18,
+    "estimatedHoursRemaining": 14.5,
+    "deploymentsCost": {
+      "commander": 124,
+      "workerPerInstance": 62,
+      "currency": "USD/month"
+    }
+  }
+}
