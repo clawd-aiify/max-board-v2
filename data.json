@@ -266,30 +266,11 @@
         }
       ],
       "completedDate": "2026-01-31"
-    }
-  ],
-  "inProgress": [],
-  "todo": [
-    {
-      "id": "slack-wiring-workers",
-      "title": "Wire Slack Channels into Worker Deployment",
-      "category": "Infrastructure",
-      "priority": "high",
-      "description": "Integrate Customer Onboarding Agent Slack automation into deploy.sh",
-      "details": [
-        "Call onboarding webhook from deploy.sh",
-        "Store channel IDs in worker config",
-        "Route worker messages to dedicated channels",
-        "Ensure team auto-invite works for all deployments"
-      ],
-      "blockers": [],
-      "estimatedHours": 2
     },
     {
       "id": "gce-vm-naming",
       "title": "Improve GCE VM Naming Convention",
       "category": "Infrastructure",
-      "priority": "high",
       "description": "Make VM names more descriptive for easier tracking at scale",
       "details": [
         "Current: test-worker-v4, central-command",
@@ -297,14 +278,12 @@
         "Pattern: max-{mode}-{customer-slug}",
         "Update: terraform/max-clone/main.tf, deploy.sh"
       ],
-      "blockers": [],
-      "estimatedHours": 1
+      "completedDate": "2026-01-31"
     },
     {
       "id": "firewall-context-webhook",
       "title": "Add GCP Firewall Rule for Context Webhook",
       "category": "Infrastructure",
-      "priority": "medium",
       "description": "Allow inbound traffic to central-command:8765 for N8N context enrichment",
       "details": [
         "Port: 8765",
@@ -312,14 +291,25 @@
         "Target: central-command VM",
         "Command: gcloud compute firewall-rules create ..."
       ],
-      "blockers": [],
-      "estimatedHours": 0.5
+      "completedDate": "2026-01-31"
+    },
+    {
+      "id": "slack-wiring-workers",
+      "title": "Wire Slack Channels into Worker Deployment",
+      "category": "Infrastructure",
+      "description": "Integrate Customer Onboarding Agent Slack automation into deploy.sh",
+      "details": [
+        "Call onboarding webhook from deploy.sh",
+        "Store channel IDs in worker config",
+        "Route worker messages to dedicated channels",
+        "Ensure team auto-invite works for all deployments"
+      ],
+      "completedDate": "2026-01-31"
     },
     {
       "id": "zoho-sandbox-get-endpoints",
       "title": "Add GET Endpoints to Zoho API Sandbox",
       "category": "Testing",
-      "priority": "low",
       "description": "Support list operations in mock sandbox for comprehensive SDK testing",
       "details": [
         "Endpoints: GET /api/zoho/items, GET /api/zoho/compositeitems",
@@ -327,9 +317,38 @@
         "Filters: Support pagination, search, filters",
         "Update SDK test suite to use full CRUD"
       ],
-      "blockers": [],
-      "estimatedHours": 2
+      "completedDate": "2026-01-31"
     },
+    {
+      "id": "worker-specs-definition",
+      "title": "Define Per-Customer Worker Requirements",
+      "category": "Planning",
+      "description": "Document standard worker configuration per customer type",
+      "details": [
+        "Channels: Slack, email, others?",
+        "Integrations: Which APIs/services?",
+        "Specs: CPU, RAM, disk requirements",
+        "Cost estimates per tier",
+        "Template: Create customer-requirements.md"
+      ],
+      "completedDate": "2026-01-31"
+    },
+    {
+      "id": "n8n-workflow-sharing",
+      "title": "Share N8N Workflows with Team",
+      "category": "Documentation",
+      "description": "Import workflows into shared n8n team project for collaboration",
+      "details": [
+        "Workflows: Context Enrichment, Customer Onboarding",
+        "Method: Export JSON → Import to team project",
+        "Document workflow IDs and webhook URLs",
+        "Add team members to n8n workspace"
+      ],
+      "completedDate": "2026-01-31"
+    }
+  ],
+  "inProgress": [],
+  "todo": [
     {
       "id": "email-reply-automation",
       "title": "Email Reply Automation Strategy",
@@ -342,7 +361,9 @@
         "Decision needed: Josh/Sami preference",
         "Implementation: Extend scripts/gmail-monitor.js"
       ],
-      "blockers": ["Awaiting Sami's input"],
+      "blockers": [
+        "Awaiting Sami's input"
+      ],
       "estimatedHours": 3
     },
     {
@@ -357,37 +378,6 @@
         "Download JSON key",
         "Add GOOGLE_APPLICATION_CREDENTIALS to .env",
         "Test terraform apply from CLI"
-      ],
-      "blockers": [],
-      "estimatedHours": 1
-    },
-    {
-      "id": "worker-specs-definition",
-      "title": "Define Per-Customer Worker Requirements",
-      "category": "Planning",
-      "priority": "medium",
-      "description": "Document standard worker configuration per customer type",
-      "details": [
-        "Channels: Slack, email, others?",
-        "Integrations: Which APIs/services?",
-        "Specs: CPU, RAM, disk requirements",
-        "Cost estimates per tier",
-        "Template: Create customer-requirements.md"
-      ],
-      "blockers": [],
-      "estimatedHours": 2
-    },
-    {
-      "id": "n8n-workflow-sharing",
-      "title": "Share N8N Workflows with Team",
-      "category": "Documentation",
-      "priority": "low",
-      "description": "Import workflows into shared n8n team project for collaboration",
-      "details": [
-        "Workflows: Context Enrichment, Customer Onboarding",
-        "Method: Export JSON → Import to team project",
-        "Document workflow IDs and webhook URLs",
-        "Add team members to n8n workspace"
       ],
       "blockers": [],
       "estimatedHours": 1
@@ -448,11 +438,11 @@
     ]
   },
   "stats": {
-    "tasksCompleted": 13,
+    "tasksCompleted": 19,
     "tasksInProgress": 0,
-    "tasksTodo": 8,
-    "hoursInvested": 18,
-    "estimatedHoursRemaining": 14.5,
+    "tasksTodo": 2,
+    "hoursInvested": 24.5,
+    "estimatedHoursRemaining": 4,
     "deploymentsCost": {
       "commander": 124,
       "workerPerInstance": 62,
