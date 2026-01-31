@@ -358,6 +358,18 @@
       "blockers": [],
       "estimatedHours": 1,
       "status": "ready"
+    },
+    {
+      "id": "add-browser-functionality",
+      "title": "Add browser functionality",
+      "category": "Infrastructure",
+      "priority": "medium",
+      "description": "Install Chrome/Chromium + browser control service for web automation",
+      "details": [
+        "Install Chrome/Chromium + browser control service for web automation"
+      ],
+      "blockers": [],
+      "estimatedHours": 2
     }
   ],
   "architecture": {
@@ -417,9 +429,9 @@
   "stats": {
     "tasksCompleted": 17,
     "tasksInProgress": 0,
-    "tasksTodo": 2,
+    "tasksTodo": 3,
     "hoursInvested": 24.5,
-    "estimatedHoursRemaining": 4,
+    "estimatedHoursRemaining": 6,
     "deploymentsCost": {
       "commander": 124,
       "workerPerInstance": 62,
