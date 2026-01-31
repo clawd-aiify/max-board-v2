@@ -359,6 +359,27 @@
         }
       ],
       "completedDate": "2026-01-31"
+    },
+    {
+      "id": "clean-up-old-testing-channels",
+      "title": "Clean up old testing channels",
+      "category": "Infrastructure",
+      "description": "Archive unused test Slack channels from customer onboarding tests",
+      "details": [
+        "Archived 9 channels total:",
+        "- customer-demo-company (private)",
+        "- customer-demo-company-support (public)",
+        "- customer-test-corp (private)",
+        "- customer-test-corp-support (public)",
+        "- customer-test-automation-co (private)",
+        "- customer-test-automation-co-support (public)",
+        "- customer-test-worker-v5 (private)",
+        "- customer-test-worker-v5-support (public)",
+        "- C0ACZC449LY (unidentified test channel)",
+        "Method: conversations.archive API",
+        "Status: ✅ All channels archived successfully"
+      ],
+      "completedDate": "2026-01-31"
     }
   ],
   "inProgress": [],
@@ -390,18 +411,6 @@
       "description": "Install Chrome/Chromium + browser control service for web automation",
       "details": [
         "Install Chrome/Chromium + browser control service for web automation"
-      ],
-      "blockers": [],
-      "estimatedHours": 2
-    },
-    {
-      "id": "clean-up-old-testing-channels",
-      "title": "Clean up old testing channels",
-      "category": "Infrastructure",
-      "priority": "medium",
-      "description": "Remove/archive unused test Slack channels",
-      "details": [
-        "Remove/archive unused test Slack channels"
       ],
       "blockers": [],
       "estimatedHours": 2
@@ -462,11 +471,11 @@
     ]
   },
   "stats": {
-    "tasksCompleted": 19,
+    "tasksCompleted": 20,
     "tasksInProgress": 0,
-    "tasksTodo": 3,
-    "hoursInvested": 26,
-    "estimatedHoursRemaining": 7,
+    "tasksTodo": 2,
+    "hoursInvested": 26.5,
+    "estimatedHoursRemaining": 5,
     "deploymentsCost": {
       "commander": 124,
       "workerPerInstance": 62,
