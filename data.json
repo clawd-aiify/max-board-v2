@@ -339,6 +339,26 @@
         }
       ],
       "completedDate": "2026-01-31"
+    },
+    {
+      "id": "gcp-service-account",
+      "title": "Add GCP Service Account to .env",
+      "category": "Infrastructure",
+      "description": "Enable Terraform to deploy VMs programmatically",
+      "details": [
+        "Service Account: 34805915210-compute@developer.gserviceaccount.com",
+        "Project: gen-lang-client-0626730649",
+        "Stored in: GCP_SERVICE_ACCOUNT_KEY (.env)",
+        "Permissions: Compute Engine (VM management)",
+        "Status: ✅ Configured and ready for Terraform automation"
+      ],
+      "links": [
+        {
+          "label": "GCP Console",
+          "url": "https://console.cloud.google.com"
+        }
+      ],
+      "completedDate": "2026-01-31"
     }
   ],
   "inProgress": [],
@@ -361,23 +381,6 @@
       "estimatedHours": 3,
       "status": "waiting-for-team",
       "statusNote": "Awaiting Sami's input"
-    },
-    {
-      "id": "gcp-service-account",
-      "title": "Add GCP Service Account to .env",
-      "category": "Infrastructure",
-      "priority": "high",
-      "description": "Enable Terraform to deploy VMs programmatically",
-      "details": [
-        "Create service account in GCP Console",
-        "Grant Compute Engine Admin role",
-        "Download JSON key",
-        "Add GOOGLE_APPLICATION_CREDENTIALS to .env",
-        "Test terraform apply from CLI"
-      ],
-      "blockers": [],
-      "estimatedHours": 1,
-      "status": "ready"
     },
     {
       "id": "add-browser-functionality",
@@ -459,11 +462,11 @@
     ]
   },
   "stats": {
-    "tasksCompleted": 18,
+    "tasksCompleted": 19,
     "tasksInProgress": 0,
-    "tasksTodo": 4,
+    "tasksTodo": 3,
     "hoursInvested": 26,
-    "estimatedHoursRemaining": 8,
+    "estimatedHoursRemaining": 7,
     "deploymentsCost": {
       "commander": 124,
       "workerPerInstance": 62,
