@@ -15,17 +15,21 @@ type Task = {
   priority?: string;
   blockers?: string[];
   estimatedHours?: number;
+  status?: string;
+  statusNote?: string;
+  testingStatus?: string;
+  testingNote?: string;
 };
 
 export default function ProgressBoard() {
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [mobileView, setMobileView] = useState<'done' | 'progress' | 'todo'>('progress');
+  const [mobileView, setMobileView] = useState<'done' | 'testing' | 'progress' | 'todo'>('testing');
 
   const allCategories = useMemo(() => {
     const categories = new Set<string>();
-    [...data.done, ...data.inProgress, ...data.todo].forEach((task: any) => {
+    [...data.done, ...(data as any).testing || [], ...data.inProgress, ...data.todo].forEach((task: any) => {
       categories.add(task.category);
     });
     return Array.from(categories).sort();
@@ -44,6 +48,7 @@ export default function ProgressBoard() {
   };
 
   const filteredDone = filterTasks(data.done);
+  const filteredTesting = filterTasks((data as any).testing || []);
   const filteredInProgress = filterTasks(data.inProgress);
   const filteredTodo = filterTasks(data.todo);
 
@@ -79,6 +84,18 @@ export default function ProgressBoard() {
           <span>{task.blockers.length} blocker{task.blockers.length > 1 ? 's' : ''}</span>
         </div>
       )}
+      {task.status === 'waiting-for-team' && (
+        <div className="status-badge waiting">
+          <span>⏳</span>
+          <span>Waiting for team</span>
+        </div>
+      )}
+      {task.testingStatus === 'needs-validation' && (
+        <div className="status-badge testing">
+          <span>🧪</span>
+          <span>Needs validation</span>
+        </div>
+      )}
     </div>
   );
 
@@ -87,7 +104,7 @@ export default function ProgressBoard() {
     tasks: Task[];
     icon: string;
     count: number;
-    type: 'done' | 'progress' | 'todo';
+    type: 'done' | 'testing' | 'progress' | 'todo';
   }) => (
     <div className={`column ${type}`}>
       <div className="column-header">
@@ -162,6 +179,10 @@ export default function ProgressBoard() {
           <div className="stat-number">{data.stats.tasksCompleted}</div>
           <div className="stat-label">Completed</div>
         </div>
+        <div className="stat-card testing">
+          <div className="stat-number">{(data as any).stats.tasksTesting || 0}</div>
+          <div className="stat-label">Testing</div>
+        </div>
         <div className="stat-card progress">
           <div className="stat-number">{data.stats.tasksInProgress}</div>
           <div className="stat-label">In Progress</div>
@@ -186,6 +207,14 @@ export default function ProgressBoard() {
           <div className="tab-count">{filteredDone.length}</div>
         </button>
         <button
+          onClick={() => setMobileView('testing')}
+          className={`mobile-tab testing ${mobileView === 'testing' ? 'active' : ''}`}
+        >
+          <div className="tab-icon">🧪</div>
+          <div className="tab-label">Testing</div>
+          <div className="tab-count">{filteredTesting.length}</div>
+        </button>
+        <button
           onClick={() => setMobileView('progress')}
           className={`mobile-tab progress ${mobileView === 'progress' ? 'active' : ''}`}
         >
@@ -205,6 +234,7 @@ export default function ProgressBoard() {
 
       <div className="board">
         <Column title="Done" tasks={filteredDone} icon="✅" count={filteredDone.length} type="done" />
+        <Column title="Testing" tasks={filteredTesting} icon="🧪" count={filteredTesting.length} type="testing" />
         <Column title="In Progress" tasks={filteredInProgress} icon="🚧" count={filteredInProgress.length} type="progress" />
         <Column title="To Do" tasks={filteredTodo} icon="📋" count={filteredTodo.length} type="todo" />
       </div>
@@ -212,6 +242,9 @@ export default function ProgressBoard() {
       <div className="mobile-board">
         {mobileView === 'done' && (
           <Column title="Done" tasks={filteredDone} icon="✅" count={filteredDone.length} type="done" />
+        )}
+        {mobileView === 'testing' && (
+          <Column title="Testing" tasks={filteredTesting} icon="🧪" count={filteredTesting.length} type="testing" />
         )}
         {mobileView === 'progress' && (
           <Column title="In Progress" tasks={filteredInProgress} icon="🚧" count={filteredInProgress.length} type="progress" />

@@ -281,32 +281,6 @@
       "completedDate": "2026-01-31"
     },
     {
-      "id": "firewall-context-webhook",
-      "title": "Add GCP Firewall Rule for Context Webhook",
-      "category": "Infrastructure",
-      "description": "Allow inbound traffic to central-command:8765 for N8N context enrichment",
-      "details": [
-        "Port: 8765",
-        "Source: N8N Cloud IP ranges",
-        "Target: central-command VM",
-        "Command: gcloud compute firewall-rules create ..."
-      ],
-      "completedDate": "2026-01-31"
-    },
-    {
-      "id": "slack-wiring-workers",
-      "title": "Wire Slack Channels into Worker Deployment",
-      "category": "Infrastructure",
-      "description": "Integrate Customer Onboarding Agent Slack automation into deploy.sh",
-      "details": [
-        "Call onboarding webhook from deploy.sh",
-        "Store channel IDs in worker config",
-        "Route worker messages to dedicated channels",
-        "Ensure team auto-invite works for all deployments"
-      ],
-      "completedDate": "2026-01-31"
-    },
-    {
       "id": "zoho-sandbox-get-endpoints",
       "title": "Add GET Endpoints to Zoho API Sandbox",
       "category": "Testing",
@@ -364,7 +338,9 @@
       "blockers": [
         "Awaiting Sami's input"
       ],
-      "estimatedHours": 3
+      "estimatedHours": 3,
+      "status": "waiting-for-team",
+      "statusNote": "Awaiting Sami's input"
     },
     {
       "id": "gcp-service-account",
@@ -380,7 +356,8 @@
         "Test terraform apply from CLI"
       ],
       "blockers": [],
-      "estimatedHours": 1
+      "estimatedHours": 1,
+      "status": "ready"
     }
   ],
   "architecture": {
@@ -438,7 +415,7 @@
     ]
   },
   "stats": {
-    "tasksCompleted": 19,
+    "tasksCompleted": 17,
     "tasksInProgress": 0,
     "tasksTodo": 2,
     "hoursInvested": 24.5,
@@ -447,6 +424,39 @@
       "commander": 124,
       "workerPerInstance": 62,
       "currency": "USD/month"
+    },
+    "tasksTesting": 2
+  },
+  "testing": [
+    {
+      "id": "firewall-context-webhook",
+      "title": "Add GCP Firewall Rule for Context Webhook",
+      "category": "Infrastructure",
+      "description": "Allow inbound traffic to central-command:8765 for N8N context enrichment",
+      "details": [
+        "Port: 8765",
+        "Source: N8N Cloud IP ranges",
+        "Target: central-command VM",
+        "Command: gcloud compute firewall-rules create ..."
+      ],
+      "completedDate": "2026-01-31",
+      "testingStatus": "needs-validation",
+      "testingNote": "Ready for testing - needs manual validation"
+    },
+    {
+      "id": "slack-wiring-workers",
+      "title": "Wire Slack Channels into Worker Deployment",
+      "category": "Infrastructure",
+      "description": "Integrate Customer Onboarding Agent Slack automation into deploy.sh",
+      "details": [
+        "Call onboarding webhook from deploy.sh",
+        "Store channel IDs in worker config",
+        "Route worker messages to dedicated channels",
+        "Ensure team auto-invite works for all deployments"
+      ],
+      "completedDate": "2026-01-31",
+      "testingStatus": "needs-validation",
+      "testingNote": "Ready for testing - needs manual validation"
     }
-  }
+  ]
 }
