@@ -319,6 +319,26 @@
         "Add team members to n8n workspace"
       ],
       "completedDate": "2026-01-31"
+    },
+    {
+      "id": "google-contacts-oauth",
+      "title": "Google Contacts API OAuth Integration",
+      "category": "Integration",
+      "description": "OAuth2 flow for Google Contacts API access with automatic token refresh",
+      "details": [
+        "OAuth callback server running on localhost:8080",
+        "Scopes: contacts.readonly, contacts.other.readonly",
+        "Token storage: ~/.openclaw/credentials/google-contacts.json",
+        "Auto-refresh: Handles expired tokens automatically",
+        "Integration: Ready for contact sync and search features"
+      ],
+      "links": [
+        {
+          "label": "Google Contacts API",
+          "url": "https://developers.google.com/contacts/v3"
+        }
+      ],
+      "completedDate": "2026-01-31"
     }
   ],
   "inProgress": [],
@@ -439,10 +459,10 @@
     ]
   },
   "stats": {
-    "tasksCompleted": 17,
+    "tasksCompleted": 18,
     "tasksInProgress": 0,
     "tasksTodo": 4,
-    "hoursInvested": 24.5,
+    "hoursInvested": 26,
     "estimatedHoursRemaining": 8,
     "deploymentsCost": {
       "commander": 124,
