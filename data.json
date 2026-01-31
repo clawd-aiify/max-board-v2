@@ -370,6 +370,18 @@
       ],
       "blockers": [],
       "estimatedHours": 2
+    },
+    {
+      "id": "clean-up-old-testing-channels",
+      "title": "Clean up old testing channels",
+      "category": "Infrastructure",
+      "priority": "medium",
+      "description": "Remove/archive unused test Slack channels",
+      "details": [
+        "Remove/archive unused test Slack channels"
+      ],
+      "blockers": [],
+      "estimatedHours": 2
     }
   ],
   "architecture": {
@@ -429,9 +441,9 @@
   "stats": {
     "tasksCompleted": 17,
     "tasksInProgress": 0,
-    "tasksTodo": 3,
+    "tasksTodo": 4,
     "hoursInvested": 24.5,
-    "estimatedHoursRemaining": 6,
+    "estimatedHoursRemaining": 8,
     "deploymentsCost": {
       "commander": 124,
       "workerPerInstance": 62,
