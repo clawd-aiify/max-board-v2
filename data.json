@@ -358,18 +358,6 @@
       "blockers": [],
       "estimatedHours": 1,
       "status": "ready"
-    },
-    {
-      "id": "test-case-insensitive",
-      "title": "Test case insensitive",
-      "category": "Infrastructure",
-      "priority": "medium",
-      "description": "This should work",
-      "details": [
-        "This should work"
-      ],
-      "blockers": [],
-      "estimatedHours": 2
     }
   ],
   "architecture": {
@@ -429,9 +417,9 @@
   "stats": {
     "tasksCompleted": 17,
     "tasksInProgress": 0,
-    "tasksTodo": 3,
+    "tasksTodo": 2,
     "hoursInvested": 24.5,
-    "estimatedHoursRemaining": 6,
+    "estimatedHoursRemaining": 4,
     "deploymentsCost": {
       "commander": 124,
       "workerPerInstance": 62,
