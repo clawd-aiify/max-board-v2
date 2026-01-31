@@ -231,7 +231,7 @@
         "Output: onboarding-spec.md, terraform.tfvars, MEMORY.md, Slack channels",
         "Slack: Auto-creates #customer-{slug} + #customer-{slug}-support",
         "Team: Auto-invites U09GY9DMKAA, U09GH95TD5M",
-        "Validation: ✅ End-to-end test with Demo Company",
+        "Validation: ✅ Multiple successful tests (Demo Company, Test Automation Co)",
         "Business Impact: Saves 2-4 hours per lead"
       ],
       "links": [
