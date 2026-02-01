@@ -496,6 +496,16 @@
       ],
       "blockers": [],
       "estimatedHours": 2
+    },
+    {
+      "id": "provision-cloudrun-n8n-for-each-worker-as-part-of-",
+      "title": "provision cloudrun n8n for each worker as part of test pipeline. use command: gcloud run deploy n8n-service --image=n8nio/n8n --allow-unauthenticated --region us-east1 --port=5678 --no-cpu-throttling --cpu 1 --memory=4Gi",
+      "category": "Infrastructure",
+      "priority": "medium",
+      "description": "provision cloudrun n8n for each worker as part of test pipeline. use command: gcloud run deploy n8n-service --image=n8nio/n8n --allow-unauthenticated --region us-east1 --port=5678 --no-cpu-throttling --cpu 1 --memory=4Gi",
+      "details": [],
+      "blockers": [],
+      "estimatedHours": 2
     }
   ],
   "architecture": {
@@ -555,9 +565,9 @@
   "stats": {
     "tasksCompleted": 22,
     "tasksInProgress": 0,
-    "tasksTodo": 6,
+    "tasksTodo": 7,
     "hoursInvested": 27,
-    "estimatedHoursRemaining": 12,
+    "estimatedHoursRemaining": 14,
     "deploymentsCost": {
       "commander": 124,
       "workerPerInstance": 62,
