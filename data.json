@@ -411,7 +411,37 @@
       "completedDate": "2026-01-31"
     }
   ],
-  "inProgress": [],
+  "inProgress": [
+    {
+      "id": "n8n-org-policy-blocker",
+      "title": "N8N Cloud Run Deployment - Organization Policy Blocker",
+      "category": "Infrastructure",
+      "priority": "high",
+      "description": "N8N automation service deployed on Cloud Run (us-east1), but GCP Organization Policy blocks allUsers access. Awaiting org admin approval to relax constraint.",
+      "details": [
+        "Service URL: https://n8n-service-yqrgebw5tq-ue.a.run.app",
+        "Deployment: ✅ Complete (Cloud Run service active, v2.4.8)",
+        "Service Account Auth: ✅ Working via ID tokens",
+        "Blocker: Organization Policy prevents allUsers + roles/run.invoker binding",
+        "Impact: Cannot bootstrap n8n UI → cannot create admin user → cannot generate API key → workflow remains inactive",
+        "Workflow Created: ID UZZddpuGpumNYK9j (AI Email Responder with Gmail trigger + Kimi K2 LLM)",
+        "Awaiting: Org admin (U09GH95TD5M) to add allUsers permission",
+        "Next: Once policy fixed, bootstrap UI and activate workflow"
+      ],
+      "blockers": [
+        {
+          "id": "org-policy-allUsers",
+          "description": "GCP Org Policy blocks allUsers from having roles/run.invoker on Cloud Run",
+          "owner": "U09GH95TD5M",
+          "status": "awaiting-approval"
+        }
+      ],
+      "estimatedHours": 0.5,
+      "status": "blocked",
+      "createdDate": "2026-02-01",
+      "lastUpdated": "2026-02-01T23:10:00Z"
+    }
+  ],
   "todo": [
     {
       "id": "model-testing-documentation",
