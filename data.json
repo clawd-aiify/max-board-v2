@@ -460,6 +460,18 @@
       ],
       "blockers": [],
       "estimatedHours": 2
+    },
+    {
+      "id": "worker-status-app",
+      "title": "Worker Status App",
+      "category": "Infrastructure",
+      "priority": "medium",
+      "description": "Create a new app for status checking on worker notes",
+      "details": [
+        "Create a new app for status checking on worker notes"
+      ],
+      "blockers": [],
+      "estimatedHours": 2
     }
   ],
   "architecture": {
@@ -519,9 +531,9 @@
   "stats": {
     "tasksCompleted": 22,
     "tasksInProgress": 0,
-    "tasksTodo": 2,
+    "tasksTodo": 4,
     "hoursInvested": 27,
-    "estimatedHoursRemaining": 5,
+    "estimatedHoursRemaining": 8,
     "deploymentsCost": {
       "commander": 124,
       "workerPerInstance": 62,
